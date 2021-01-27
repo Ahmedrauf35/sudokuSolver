@@ -2,7 +2,6 @@
 
 
 namespace ds {
-	//docker run -it --rm -v /Users/ahmedrauf/Desktop/labs/proj2-Ahmedrauf35:/lab cisc2200 "make clean; make" # execute
 
 bool Sudoku::isPresent(int col, int num) // function to check whether "it" is in column 
 {
@@ -29,8 +28,6 @@ bool Sudoku::isPresentRow(int row, int num) // same as above but for row
 }
 bool Sudoku::isPresBox(int strtrow, int strtcol, int num) // same but for 3x3
 {
-	//int srow = row - row % 3; // passed as parameters in isValid() instead
-	//int scol = col - col % 3;
 	for(int row = 0; row < 3; row++) // checks in a 3x3 box 
 	{
 		for(int col = 0; col < 3; col++)
@@ -57,7 +54,6 @@ bool Sudoku::findEmpt(int& row, int& col){ // returns true if empty i.e is solve
 }
 bool Sudoku::isValid(int row, int col, int num){ // although not really, trying to "curry" all above functions
 	return !isPresentRow(row, num) && !isPresent(col, num) && !isPresBox(row - row % 3, col - col % 3, num) && grid[row][col] == 0;
-	//return (!isPresentRow(row,num) && !isPresent(col,num) && !isPresBox(row - row%3, col - col%3, num));
 }
 
 void Sudoku::readFrom1DArray(int *board) {
@@ -95,48 +91,7 @@ bool Sudoku::solve() {
    
    }
    return false;
-   /*if (!findEmpt(row, col))
-   {
-      return true;    
-   } 
-   for (int num = 1; num <= 9; num++) 
-   {     
-      if (isValid(row, col, num))
-       {    
-         grid[row][col] = num;
-         if (solve())
-         {     
-            return true;
-         }
-         grid[row][col] = 0;    
-      }
-   }
-    return false;*/
 
 }
-  
-
-
-/*bool Sudoku::solve() {
-  // TODO: solve the sudoku puzzle by setting 1-9 to cells in `grid`
-	int row = 0; 
-	int col = 0;
-	//if(!findEmpt(row,col))
-	//	{
-	//		return true; // all grids are filled with something other than 0
-	//	}
-		
-	for(int num = 1; num <= 9; num++){
-		if(isValid(row, col, num)){
-			grid[row][col] = num;
-		
-		if(solve()){
-			return true;
-		}
-		//grid[row][col] = 0;
-	}
- }
-	return false;
-}*/
 
 } // namespace ds
